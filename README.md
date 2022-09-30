@@ -30,7 +30,7 @@ In this tutorial, you will be using the API Connect tooling to design and meet t
 
 - Lab 2: Bank admin persona -  Define API Plan and Publish API
 
-- Lab 3: Consumer organisation developer persona - Self Service on-boarding and test APIs
+- Lab 3: Consumer organisation developer persona - Self Service on-boarding, subscribe and consume APIs
 
 
 ### Tutorial Context:
@@ -218,10 +218,102 @@ Congratulations, you have completed the Create and Secure an API lab. Throughout
 • Create an API by invoking a mocked backend service (account service)
 • Configure ClientID/Secret Security, endpoints, and proxy to invoke endpoint
 • Test a REST API in the Developer Toolkit
-• Publish an API for developers
+• Publish an API for developers into Sandbox catalog
 
 
-#### 3: Test & Consume API
+#### 3: Subscribe & Consume API
+
+In thie lab, you are playing a role as consumer organization developer. You are interested to explore what APIs are made available in the Bank API developer portal, which was successfully published in your previous lab exercise.
+
+3.1 Open a Developer Portal based on the portal URL given.
+
+![image](https://user-images.githubusercontent.com/25983259/193216476-012ef906-2110-4bf1-8883-a1783baf7c0d.png)
+
+3.2 Click "Create account" and complete the sign up form. Specify the name of the Consumer Organisation, e.g. Fintech-Kevin
+
+![image](https://user-images.githubusercontent.com/25983259/193219474-0cb73b13-fc5c-49b1-a933-dc463265549f.png)
+
+3.3.Click Sign up. A confirmation message is sent to the email address provided in the form.
+
+3.4 To use the Developer Portal, click "Sign in" and login with the user credentials you specified.
+
+![image](https://user-images.githubusercontent.com/25983259/193220193-ad50b41f-0087-4254-9b00-7dc5e88854c3.png)
+
+3.5 Upon login, you will see 5 key functions displayed in the top menu bar:
+a. API Product
+b. App
+c. Blogs
+d. Forum
+e. Support
+
+![image](https://user-images.githubusercontent.com/25983259/193220736-7ebfca73-6dfe-4dca-ad92-43a8cc75b0f5.png)
+
+3.6 Simply click on each of the above to view the capability.
+
+3.7 Now let's create and register a new App in the developer portal.
+
+In the Developer Portal, click "App" -> "Create new App".
+Note: You cannot register new applications if you are logged in as the administrator.
+
+![image](https://user-images.githubusercontent.com/25983259/193221401-28261089-3e1b-4cd9-baa4-42b6e5c3f69a.png)
+
+3.8 Enter the Title of the application, e.g. Application-xxx. Note: xxx is your name as suffix to avoid overlapping with other student's application.
+
+<img width="549" alt="image" src="https://user-images.githubusercontent.com/25983259/193223731-7f35a537-cef9-489b-9178-0474341325e8.png">
+
+3.9 Click Save.
+
+3.10 Copy the key and secret values for the new app. Click OK.
+
+![image](https://user-images.githubusercontent.com/25983259/193223305-a49ecf56-dfff-41f2-9124-6e11455e62c3.png)
+
+3.11 Click OK.
+You see the Subscription summary page for the App your have just registered
+
+![image](https://user-images.githubusercontent.com/25983259/193224856-6cf415c3-041c-42dd-9c9c-11ccf610eef5.png)
+
+3.12 You may explore what is inside by clicking on “Dashboard” and “Notification” menu:
+
+![image](https://user-images.githubusercontent.com/25983259/193225111-5b581fae-b247-4b8a-973d-35879f19d105.png)
+
+3.13 Next, let's browse and start subscribing to the API products. 
+
+3.14 Click API Products. Then search for the API Product (e.g. Customer-xxx that was created in previous lab.
+
+![image](https://user-images.githubusercontent.com/25983259/193225790-b7671b6a-7ef7-4829-9351-7cc2c072749a.png)
+
+3.15 Click the Customer-xxx product and you will see the product details such as APIs and Plans available for this product, as shown below:
+
+<img width="575" alt="image" src="https://user-images.githubusercontent.com/25983259/193227019-70da84b4-5827-47a5-ba37-a941a6514227.png">
+
+3.16 Choose the default plan by clicking the “Select”
+
+![image](https://user-images.githubusercontent.com/25983259/193227467-d72f8b01-2238-4541-8ddb-5a9941d0b302.png)
+
+3.17 You will go through the API product plan subscription steps as shown below.
+
+![image](https://user-images.githubusercontent.com/25983259/193227753-f58c6a3f-94fe-4420-b734-1e82aaaf2aad.png)
+
+3.18 Select an existing app that you had registered previously: e.g. Application-xxx 
+
+![image](https://user-images.githubusercontent.com/25983259/193228421-3f188962-1d0c-4f7e-a096-6440f6d9b169.png)
+
+3.19 Click Next. 
+
+![image](https://user-images.githubusercontent.com/25983259/193228800-ecbeb8dd-50db-44a4-8ea0-4e764860b765.png)
+
+3.20 3.19 Click Done.
+
+![image](https://user-images.githubusercontent.com/25983259/193229188-fe5de77a-d50e-4ba1-ad56-c60bb5778e9f.png)
+
+3.21 At this stage, your Fintech app have successfully subscribed to Customer product which contains Account API and plan.
+
+3.22 Next, let's test the API you have just subscribed.
+
+3.23 
+
+
+
 
 
 
