@@ -5,6 +5,17 @@ CP4I API Connect enablement
 
 ### Turotial Use Case:
 
+A regional bank wants to move to the cloud and adopt a platform to share data among
+registered partners but is concerned about continuing to meet regulatory compliance standards
+and mitigating potential security risks.
+As their integration specialist, you have been asked to demonstrate that access to account
+information via APIs all is secure no matter where they reside, and that the sensitive data could
+be protected. In this example, you’ll use security-rich features within the API management
+lifecycle to help proxy an API and mask sensitive data from the response, using built-in policies
+and mitigating potential security risks.
+
+In this tutorial, you will be using the API Connect tooling to design and meet the following business requirement.
+
   - Bank needs to provide customer account information to digital channels. e.g Fintech
 
   - Create an API to allow digital channel developer to access & test the API from Bank’s developer portal.
@@ -28,3 +39,15 @@ CP4I API Connect enablement
 - Topic 2: Bank admin persona -  Define API Plan and Publish API
 
 - Topic 3: Consumer organisation developer persona - Self Service on-boarding and test APIs
+
+
+#### 1: Create API 
+
+
+#### 2: Publish API
+
+
+#### 3: Test & Consume API
+
+
+
