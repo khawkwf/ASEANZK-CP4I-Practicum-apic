@@ -313,7 +313,7 @@ You see the Subscription summary page for the App your have just registered
 3.23 Click API Products in the Developer Portal dashboard.
 ![image](https://user-images.githubusercontent.com/25983259/193384068-3cee1504-365e-4ce4-b454-88c615b3c76d.png)
 
-3.24 Click the product such as "Customer-xxx" then select the "Account-xxx" API from the list.
+3.24 Click the product such as "Customer-xxx" then select the "Accounts-xxx" API from the list.
 
 ![image](https://user-images.githubusercontent.com/25983259/193384362-62a4c17e-8b1f-44f4-9e96-cce40ef9e994.png)
 
@@ -342,15 +342,222 @@ Congratulations, you have completed the 'Self Service on-boarding, Subscribe and
 • Created and registered a new App, and subscribed it to a Plan.
 • Tested an API in the Developer Portal.
 
+For more advanced labs, you may refer to the advanced portal tutorial:
+https://www.ibm.com/docs/en/api-connect/10.0.5.x_lts?topic=apis-developer-portal-tutorials
+
+• User authentication
+    Adding a field to the sign up form
+    Adding validation to a field on the sign up form
+    Adding a field group to group fields in a content type
+   
+• Configuring the Developer Portal
+    Creating the Portal
+    Creating a private Portal site
+    Customizing themes
+    
+•  Advanced customization
+    
+    Changing the front page
+    Grouping products by category
+    Adding a custom block to the front page
+    Adding a custom block to a page other than the front page
+    Using avatars
+    Using image optimization
+    Adding a Back to top button
+    Adding a zoom effect
+    Creating a drop-down menu link
+    Displaying blog posts on the front page
+    Displaying tweets on the front page
+    Changing the profile page to display firstname lastname, instead of username
+    Using a custom weighting sort order on the product list page
+    Configuring the RobotsTxt file
+    Configuring the SecurityTxt file
+    Synchronizing application credentials with an external server
+
 
 #### 4: Secure API
 
+API Connect is a full-featured OAuth 2.0 provider. The OAuth exchange works like any other API call, and thus we treat it as its own API. In this section, you will create a new OAuth provider API, configure which grant type to use, and configure how it will authenticate user credentials.
+
+In order to configure user authentication, you must first define the registry to use, which may be LDAP, local user registry, or an authentication URL. For this lab, we will implement an Authentication URL.
+
+4.1 In the API Manager from the main menu on the left, click "Resources".
+![image](https://user-images.githubusercontent.com/25983259/193392220-c38e76c4-9b65-4910-892f-0a61b1c0e33c.png)
+
+4.2 In the 'User Registry' page, Click 'Create' 
+
+![image](https://user-images.githubusercontent.com/25983259/193392411-4f9f3a04-912d-4003-8e5d-9189ebc6c3fc.png)
+
+4.3 Select 'Authentication URL User Registry'
+
+![image](https://user-images.githubusercontent.com/25983259/193392512-74ba1e08-63fe-4420-bb87-2ba021a6a854.png)
+
+4.4 Specify the only following properties and then click [[Save.]]
+
+Title: [[App Registry]]
+
+URL: https://thinkibm-services.mybluemix.net/auth
+
+Display name:[[ App Registry]]
+
+Click Save to save the resource
+
+<img width="1073" alt="image" src="https://user-images.githubusercontent.com/25983259/193393090-d5e9fef5-6427-44e6-9272-afdc1d4b409f.png">
+
+4.5 Next, are are going to add the oAuth provider. In the Resources menu, under 'OAuth Provider' section, click [[Add->Native OAuth Provider]].
+
+![image](https://user-images.githubusercontent.com/25983259/193393235-4c3774f0-3c34-4fe6-98f2-7e4002b13251.png)
+
+4.6 Specify the following properties and click [Next] to continue.
+
+Title: [[oauth]]
+
+Name: [[oauth]]
+
+Gateway Type: [[DataPower API Gateway]]
+
+<img width="1094" alt="image" src="https://user-images.githubusercontent.com/25983259/193393281-e735d7bb-41db-4aef-a761-98ba4f893e0c.png">
+
+4.6 The next configuration screen will display the default paths to the Authorize and Token functions. For Supported grant types, choose [[Resource owner password]]. For Supported Client types, choose [[Confidential]]. Click [[Next]] continue.
+
+<img width="1065" alt="image" src="https://user-images.githubusercontent.com/25983259/193393331-005edd85-cb64-497d-8d6b-7d9f7669dab2.png">
+
+4.7 One scope is generated for you : [[sample_scope_1]]
+
+<img width="1094" alt="image" src="https://user-images.githubusercontent.com/25983259/193393406-ee205571-62d0-497f-b537-3b697ad1a6eb.png">
+
+4.8 Modify the values for [sample_scope_1], set the following fields:
+
+Name: [[account]]
+
+Description: [[Access to Accounts API]]
+
+![image](https://user-images.githubusercontent.com/25983259/193393450-d2f3807a-fd6a-452a-b914-c16aca79ddf4.png)
 
 
+4.8 Click [[Next]].
+
+<img width="1095" alt="image" src="https://user-images.githubusercontent.com/25983259/193393496-bf4109f2-ac1a-4d74-bc71-999237179370.png">
+
+4.9 Keep all items default. Click [[Finish]]
+
+![image](https://user-images.githubusercontent.com/25983259/193393528-aa235d12-51db-4ba3-81c2-1ccc84fdc534.png)
+
+4.10 Review your OAuth configuration and click [[Save]].
+ 
+![image](https://user-images.githubusercontent.com/25983259/193393610-a2259f33-6e5a-4642-82d6-73584c2d3f5e.png)
+
+Now, you have already setup the Native OAuth Provider.
+
+4.11 From the Sandbox Catalog registry setting, select API User Registries and Add App Registry. To open Sandbox Settings follow Home->Manage Catalogs->Sandbox->Catalog Settings->API User Registries.
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/25983259/193393894-314df957-d73f-4f63-a7ca-c5cf793af22b.png">
+
+4.12 Use Edit option and enable available API registry. Then cick Save
+
+<img width="1025" alt="image" src="https://user-images.githubusercontent.com/25983259/193393983-144d4eab-c969-4cc8-9bdf-57a848c32756.png">
 
 
+4.14 Now, we need to add the OAuth Service to the Sandbox Catalog. Under the Sandbox->Catalog Settings, go to 'OAuth Provider'
+
+<img width="1351" alt="image" src="https://user-images.githubusercontent.com/25983259/193394185-47e97854-c254-442f-a149-3ad08284cc0e.png">
+
+4.15 Click Edit and Choose the OAuth service created above. Then click [[Save]].
+
+<img width="1391" alt="image" src="https://user-images.githubusercontent.com/25983259/193394307-658d99bb-43e7-4015-b0e1-3c8af2a13dc3.png">
+
+4.16 Next we are going to secure your account-xxx API with OAuth. 
+
+API Connect supports multiple versions of APIs. Create a new version of the accounts API before making any changes that would break functionality for existing consumers. 
+
+4.17 In the API Manager from the main menu on the left, click [[Develop]].
+
+![image](https://user-images.githubusercontent.com/25983259/193395435-132f77d2-4c60-410d-aa30-31ae42002231.png)
+
+4.18 Click on the menu icon to the right of [accounts-xxx 1.0.0] API and select [[Save as new version]].  
+
+![image](https://user-images.githubusercontent.com/25983259/193395521-e307f389-18ef-462b-bdb6-e087bc957853.png)
+
+4.19 Enter the new version number as [[2.0.0]] and click [[Submit]].
+
+<img width="1034" alt="image" src="https://user-images.githubusercontent.com/25983259/193395564-f65c1709-c8c1-437f-bb01-bbf131c24309.png">
+
+4.20 Next, we are going to add OAuth security to the new version of accounts-xxx API. 
+
+4.21 From the Develop home page, click `accounts-xxx 2.0.0`. Navigate to the [Component->Security Schema] section.
+
+![image](https://user-images.githubusercontent.com/25983259/193396219-9e55ac52-4f25-4f56-ae39-e243444ff441.png)
+
+4.22 Click [[Add]].
+
+On the API Security Schema screen, enter the following:
+
+    Name: [oauth-1]
+
+    Description: [[API OAuth security definition]]
+
+    Type: [[OAuth2]]
+    
+    OAuth Provider Name: [[oauth]] 
+
+    Flow Type : [[Resource owner]]
+
+    Leave everything else to the default values and click Save.  
+
+<img width="680" alt="image" src="https://user-images.githubusercontent.com/25983259/193397096-e689beb4-aa64-4e3b-8568-0216091112ad.png">
+
+4.23 Review the OAuth Schema added in this accounts-xxx 2.0.0. API. 
+
+4.24 Click Save.
+
+![image](https://user-images.githubusercontent.com/25983259/193398552-c2f9b549-ab0c-4e18-b1d2-ea05b9b22c9f.png)
+
+4.25 Navigate to the `Security` section and click 'Add' to add the OAuth schema.
+
+![image](https://user-images.githubusercontent.com/25983259/193398760-255aa49c-de61-44d7-ad73-7b31877adad6.png)
 
 
+4.26 Check the `oauth-1` checkbox. Make sure `account` scope is also checked. Then click 'Create'
+
+<img width="710" alt="image" src="https://user-images.githubusercontent.com/25983259/193398852-6fad7f17-1d23-4663-b439-f4ac36a5d341.png">
 
 
+4.27 Click 'Save', then turn the API to online mode.
+
+![image](https://user-images.githubusercontent.com/25983259/193398910-3d049787-8470-4543-8d82-b3ab987d0e68.png)
+
+Summary:
+You completed Lab 4 - Add OAuth Security to your API. Throughout the tutorial, you explored the key takeaways:
+
+• Configure an OAuth 2.0 service, the Resource Owner Password grant type.
+
+• Clone a new version of an API.
+
+• Secure the new version of your API.
+
+
+#### 5: Manage API
+In the previous lab, you created a new version of the Account-xxx API which is secured with an OAuth 2.0 provider. At this stage, however, the changes are still in draft mode. In order for the changes to take effect, you must publish the APIs to the developer portal and make them available for the API Consumers. Recall though that the account-xxx 1.0.0 version is already running and has active subscribers.
+
+API lifecycle management capabilities is an essential part of the API Management platform. The API lifecycle includes the following stages:
+
+• Plan and design the API.
+
+• Develop the API.
+
+• Test the API.
+
+• Deploy (publish) the API.
+
+• Retire and deprecate the API.
+
+In this tutorial, you will explore the following key capabilities:
+
+• Creating a new API Product
+
+• Replacing the Old Product
+
+• Testing Your OAuth API in the Developer Portal
+
+5.1 
 
