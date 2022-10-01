@@ -310,7 +310,44 @@ You see the Subscription summary page for the App your have just registered
 
 3.22 Next, let's test the API you have just subscribed.
 
-3.23 
+3.23 Click API Products in the Developer Portal dashboard.
+![image](https://user-images.githubusercontent.com/25983259/193384068-3cee1504-365e-4ce4-b454-88c615b3c76d.png)
+
+3.24 Click the product such as "Customer-xxx" then select the "Account-xxx" API from the list.
+
+![image](https://user-images.githubusercontent.com/25983259/193384362-62a4c17e-8b1f-44f4-9e96-cce40ef9e994.png)
+
+3.25 Click "GET /"
+
+![image](https://user-images.githubusercontent.com/25983259/193384373-418b46d8-a8a0-4806-81ff-0aa86b2c5c6c.png)
+
+3.26 Click "Try it"
+
+![image](https://user-images.githubusercontent.com/25983259/193384419-1a0fb7b7-a7e4-48e2-96ab-92b914eca718.png)
+
+3.27 Click "Send"
+
+Note: If no response is received, navigate to the URL that is displayed at the beginning of the Try this operation section, in a new browser tab. Accept the security certificate, and then call the operation again.
+
+3.28 A returned response of 200 OK and the message body are displayed, indicating that the REST API operation call was successful.
+
+![image](https://user-images.githubusercontent.com/25983259/193384492-53cde3c7-3d78-4efe-b0d4-0996c381ab4d.png)
+
+
+Summary
+
+Congratulations, you have completed the 'Self Service on-boarding, Subscribe and Test API" lab. Throughout the lab, you learned how to:
+
+• Created a developer account in the Developer Portal.
+• Created and registered a new App, and subscribed it to a Plan.
+• Tested an API in the Developer Portal.
+
+
+#### 4: Secure API
+
+
+
+
 
 
 
