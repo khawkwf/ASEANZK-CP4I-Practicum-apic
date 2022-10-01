@@ -23,6 +23,10 @@ In this tutorial, you will be using the API Connect tooling to design and meet t
 
   - Only the authorized consumer app can consume the API with valid Client ID key.
   
+  - Need to authenticate and authorize the end customer using OAuth Token before accessing the core banking API.
+  
+  - Any version changes to the backend API should not affect the current API subscription. 
+  
   
 ### Lab Summary:
   
@@ -31,6 +35,14 @@ In this tutorial, you will be using the API Connect tooling to design and meet t
 - Lab 2: Bank admin persona -  Define API Plan and Publish API
 
 - Lab 3: Consumer organisation developer persona - Self Service on-boarding, subscribe and consume APIs
+
+- Lab 4: Secure API
+
+- Lab 5: Manage API
+
+- Lab 6: Analyze API
+
+
 
 
 ### Tutorial Context:
@@ -559,5 +571,53 @@ In this tutorial, you will explore the following key capabilities:
 
 • Testing Your OAuth API in the Developer Portal
 
-5.1 
+Create A New Product:
+In IBM API Connect, Plans and APIs are grouped together in Products, with which you can manage the availability and visibility of APIs and Plans. Products allow related APIs to be bundled together for subscribers. In Lab 1, when the accounts-xxx API was created, it also created a default product. In this section, you will create a new product from scratch and stage it to your API Manager environment.
+
+The following link provides more information about API Products in IBM API Connect:
+
+https://www.ibm.com/support/knowledgecenter/en/SSMNED_v10/com.ibm.apic.toolkit.doc/capim_products.html
+
+5.1 Now let's create a new product. Go to the [Develop] tab in your API Connect manager interface.
+
+![image](https://user-images.githubusercontent.com/25983259/193399715-670c10d4-5dd8-4706-875f-8aeb0e91a584.png)
+
+5.2 Click [Add] and select [Product]
+
+![image](https://user-images.githubusercontent.com/25983259/193399747-c5074fab-7592-4fd9-8b9c-0f9f13e8aedd.png)
+
+5.3 Click [New product] and then click [Next]
+
+<img width="1083" alt="image" src="https://user-images.githubusercontent.com/25983259/193399770-9bb70fc2-773c-4a60-ba1b-6f244d578a3d.png">
+
+5.4 Title this product [[Customer-xxx-with-SSO]] and click [[Next.]]
+
+<img width="1081" alt="image" src="https://user-images.githubusercontent.com/25983259/193401009-a31b587c-2a70-4622-a2df-df3870160de7.png">
+
+5.5 Click 'Next'
+
+5.6 Select the 'account-xxx' 2.0.0 version, which is the version that you have enabled with OAuth2.0 security policy in previous lab.
+
+![image](https://user-images.githubusercontent.com/25983259/193401116-850a8519-69ae-4292-98ee-e834d311b277.png)
+
+5.7 Click 'Next' to accept the default plan.
+
+<img width="1081" alt="image" src="https://user-images.githubusercontent.com/25983259/193401178-c6be5540-2801-4130-8a5f-4e5e52c631b4.png">
+
+5.8 Click 'Next' to define the publish policy. Keep as default.
+
+<img width="1076" alt="image" src="https://user-images.githubusercontent.com/25983259/193401274-34231cee-75ce-4782-accb-12158c67045f.png">
+
+5.9 Click 'Next' and the new product 'Customer-xxx-with-SSO' is now created.
+
+<img width="1093" alt="image" src="https://user-images.githubusercontent.com/25983259/193401375-3966c874-7a71-41e6-9526-deca104d4d98.png">
+
+5.10 
+
+
+
+
+
+
+
 
