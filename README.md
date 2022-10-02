@@ -5,7 +5,7 @@ CP4I API Connect enablement
 
 ### Tutorial Use Case:
 
-A regional bank wants to move to the cloud and adopt a platform to share data among registered partners but is concerned about continuing to meet regulatory compliance standards and mitigating potential security risks. As their integration specialist, you have been asked to demonstrate that access to account information via APIs all is secure no matter where they reside, and that the sensitive data could be protected. In this example, you’ll use security-rich features within the API management lifecycle to help proxy an API and mask sensitive data from the response, using built-in policies
+A regional bank wants to move to the cloud and adopt a platform to share data among registered partners but is concerned about continuing to meet regulatory compliance standards and mitigating potential security risks. As their integration specialist, you have been asked to demonstrate that access to account information via APIs all is secure no matter where they reside, and that the sensitive data MUST be protected. In this example, you’ll use security-rich features within the API management lifecycle to help proxy an API and mask sensitive data from the response, using built-in policies
 and mitigating potential security risks.
 
 In this tutorial, you will be using the API Connect tooling to design and meet the following business requirement.
@@ -25,7 +25,7 @@ In this tutorial, you will be using the API Connect tooling to design and meet t
   
   - Need to authenticate and authorize the end customer using OAuth Token before accessing the core banking API.
   
-  - Any version changes to the backend API should not affect the current API subscription. 
+  - Any version changes to the backend API should not affect the existing API subscribers. 
   
   
 ### Lab Summary:
@@ -36,11 +36,11 @@ In this tutorial, you will be using the API Connect tooling to design and meet t
 
 - Lab 3: Consumer organisation developer persona - Self Service on-boarding, subscribe and consume APIs
 
-- Lab 4: Secure API
+- Lab 4: Bank security persona - Define API security policies
 
-- Lab 5: Manage API
+- Lab 5: Bank admin persona - Manage API versions and life cycle
 
-- Lab 6: Analyze API
+- Lab 6: Bank business personal - Analyze API usage and statistics
 
 
 
@@ -608,11 +608,315 @@ https://www.ibm.com/support/knowledgecenter/en/SSMNED_v10/com.ibm.apic.toolkit.d
 
 <img width="1076" alt="image" src="https://user-images.githubusercontent.com/25983259/193401274-34231cee-75ce-4782-accb-12158c67045f.png">
 
-5.9 Click 'Next' and the new product 'Customer-xxx-with-SSO' is now created.
+5.9 The new product 'Customer-xxx-with-SSO' is now created. Click 'Done'
 
 <img width="1093" alt="image" src="https://user-images.githubusercontent.com/25983259/193401375-3966c874-7a71-41e6-9526-deca104d4d98.png">
 
-5.10 
+5.10 Click the new product just created 'Customer-xxx-with-SSO'. You may want to browse across other sections of the *API Product* menu such as *Visibility*, *Plans*, and *Categories* to explore additional API Product management capabilities provided by IBM API Connect. 
+
+![image](https://user-images.githubusercontent.com/25983259/193439223-42787e44-62cd-46ad-b571-464211a7a411.png)
+
+5.11 Just to confirm the new product 'Customer-xxx-with-SSO' is packaged with 'account-xxx 2.0.0' version.
+
+![image](https://user-images.githubusercontent.com/25983259/193439313-cdf2cf97-b5f7-415b-bc63-824899720278.png)
+
+5.12 Based on the information provided, API Connect will generate a yaml definition of your API Product. You can check it by clicking on the [Source] button at the top.
+
+![image](https://user-images.githubusercontent.com/25983259/193439445-ed775a8e-d732-4475-b084-7a44d0a5278f.png)
+
+
+5.12 Next, let's stage the Product to your API Manager environment
+
+Before an API Product can be published, you must first stage that Product to a Catalog. When a Product is in the staged state, it is not yet visible to, or subscribable by developers. However, it can be reviewed by the API Product Manager and Published once it is decided that the API Product is ready to be consumed.
+
+5.13 In the API Manager, from the main menu on the left, click [Develop].
+
+5.14 Click the [⋮] button next to your API Product 'Customer-xxx-with-SSO' and [Stage] it.
+
+![image](https://user-images.githubusercontent.com/25983259/193439703-8356c468-0ec0-41ff-9037-15ba96ce308a.png)
+
+5.15 Choose your [Sandbox] catalog as a target for Staging. and click 'Next'
+
+Note:
+
+IBM API Connect allows you to publish products to specific gateways associated with the Catalog.
+
+![image](https://user-images.githubusercontent.com/25983259/193439741-fc7008c0-5d42-4d3e-8ee4-78f5b18472a9.png)
+
+5.16 Click 'Stage' 
+
+![image](https://user-images.githubusercontent.com/25983259/193439897-91e90e4f-f456-4d32-9237-dc59b1dbbb41.png)
+
+5.16 Next, let's supercede the Old Product
+
+IBM API Connect provides capabilities for managing the lifecycle of your API Products. There are various states which an API Product can reside in, as well as controls around when you can move an API Product from one state to another. In this section, you will explore how to replace a running version of an API Product with a new one.
+
+5.17 Switch to the [Manage] tab of the interface and click on your [Sandbox] catalog tile.
+
+![image](https://user-images.githubusercontent.com/25983259/193440107-d05d41bf-8d11-4370-8ceb-c40021a12aae.png)
+
+5.18 The [Products tab] will list all of the API Products that this Catalog is currently managing.
+
+Make sure your newly created API Product [Customer-xxx-with-SSO' Products] is in the [Staged] status while the old [Customer-xxx] product is [Published] in the Catalog.
+
+![image](https://user-images.githubusercontent.com/25983259/193440135-6d74562e-8b92-4f19-9d85-6ba22b1bcf85.png)
+
+5.19 Click on the menu options for the existing published product [Customer-xxx] and select the [Supercede] option.
+
+![image](https://user-images.githubusercontent.com/25983259/193440797-dd3f6e0c-bc91-481a-9b71-c222c43e36ea.png)
+
+5.20 Select the newly staged product [Customer-xxx-with-SSO] to supercede [Customer-xxx]
+
+![image](https://user-images.githubusercontent.com/25983259/193440858-843d8276-2214-47aa-8697-10716e82fc17.png)
+
+When you supercede a product with another product, the following actions are taken: 1) the superseding product is published, 2) the visibility and subscribeability settings from the original product are used in the superseding product, and 3) the original product is moved to the deprecated state. When a product is deprecated, application developers that are already subscribed to the product can continue to use it, but no new developers can subscribe to the product. A deprecated product can be re-published if required.
+5.21 Click 'Next'
+
+5.22 In order to maintain our consumers’ entitlements, we need to migrate their plan subscriptions.
+
+Both of our Products have plans called [Default Plan.] You will now choose to move subscribers from the [Customer-xxx] Product’s default plan to the [Customer-xxx-with-SSO]’s default plan.
+
+5.23 In the drop-down menu, select Default Plan and then click [[Supercede]].
+
+![image](https://user-images.githubusercontent.com/25983259/193441028-36c917af-44eb-4668-b19b-2a48c9417d89.png)
+
+5.24 API Connect will take care of deprecating the old product and publishing the new one. As a result, the new 'Customer-xxx-with-SSO' Products product will be published, while the old one 'Customer-xxx' will be automatically deprecated.
+
+![image](https://user-images.githubusercontent.com/25983259/193441294-b15325d1-dc3e-4f83-9d17-3bd723ce51b1.png)
+
+5.25 Now, let's see the result of the API product superseding in the API developer portal.
+
+5.26 Open your API Portal in a new browser tab and log in with your developer account. 
+
+5.27 Click the [API Products] tab.
+
+Notice that the old [Customer-xxx] product is no longer available. It has been replaced by your new [Customer-xxx-with-SSO] product.
+
+![image](https://user-images.githubusercontent.com/25983259/193441504-c192e4c6-e5f5-421a-a613-1e0ca7a46017.png)
+
+5.28 Click on the [Customer-xxx-with-SSO]. 
+
+5.29 Select the default plan as migrated from old product to this new product.
+
+![image](https://user-images.githubusercontent.com/25983259/193442128-d9054370-e57f-4b24-b004-62aab5f43c6c.png)
+
+5.30 Select the same application created last time, i.e. [Application-xxx]
+
+![image](https://user-images.githubusercontent.com/25983259/193442166-f2ab25a3-7945-4605-816e-25438dca3519.png)
+
+5.31 Proceed to subscribe to this new product by clicking 'Next'
+
+![image](https://user-images.githubusercontent.com/25983259/193442229-62487324-fff3-4b03-abfe-161e7055d763.png)
+
+5.32 Click 'Done'
+
+Now, we can proceed to test the newly subscribed product that consists of the account-xxx 2.0.0 that has the OAuth security policy.
+
+5.33 Click on the 'account-xxx 2.0.0' API
+
+![image](https://user-images.githubusercontent.com/25983259/193442430-ebcb0ffb-dc1c-40aa-9c98-172207e7555f.png)
+
+5.34 Select the [GET /] operation. Notice that we now have an additional OAuth security requirement defined.    
+
+![image](https://user-images.githubusercontent.com/25983259/193442502-6532de5e-5951-4d17-82d9-612b7bfc17f3.png)
+
+5.35 Click on 'Try it'
+
+5.36 Choose the 'clientID, oauth-1' and input the required identity information:
+
+- Select your subscribed application from the [Client ID] drop-down menu.
+
+- Paste your secret into the [Client secret ]field.
+
+- In the [Username] and [Password] fields, you can enter any text. Select the 'account' scope. Note:  Recall that when we configured the OAuth API, we provided an Authentication URL as the method for validating the user credentials. The URL that we provided will respond back OK with any credentials.
+
+- Click the [Get Token] button to obtain an OAuth token. 
+
+The API Portal will call out to the OAuth Token URL with your client credentials and user credentials.
+The OAuth API which you built in lab 3 will intercept the request, validate the credentials, and generate a token.  
+
+![image](https://user-images.githubusercontent.com/25983259/193443135-3c69013c-75ac-4f64-bc1d-e32f7f8a5ee9.png)
+
+5.37 You should receive the response after successfully authenticated and authorized by API Gateway based on the security policy configured.
+
+![image](https://user-images.githubusercontent.com/25983259/193443216-a178c8cf-78e5-47e4-a9f2-32e6881c94fb.png)
+
+Summary
+
+You completed Lab 5 - Use Lifecycle Controls to Version your API. Throughout the tutorial, you explored the key takeaways:   
+
+• Create a new API Product.
+
+• Supercede the Old Product.
+
+• Test Your OAuth API in the Developer Portal.
+
+#### 6: Analyze API
+
+You can use API Connect to filter, sort, and aggregate your API event data. You can present the results within correlated charts, tables, and maps to help you manage service levels, set quotas, establish controls, set up security policies, manage communities, and analyze trends.
+
+API analytics is built on the OpenSearch open source real-time distributed search and analytics engine.
+
+The content of the API event data depends on the logging policy that is set for the operation. For more information about the fields that are displayed in an API event record, see API event record fields. For information about how to configure your logging preferences for API events, see activity-log policy and Including elements in your assembly.
+
+6.1 To access the API Analytics data via API Manager Dashboard, Navigate to [Analytcs] tab in your API Connect manager interface.
+
+![image](https://user-images.githubusercontent.com/25983259/193446190-e5d5003f-1aa5-4538-9acd-2acbe12acaeb.png)
+
+6.2 Five out-of-the-box dashboards are available:
+
+• API Dashboard
+• Product Dashboard
+• Monitoring Latency Dashboard 
+• Monitoring Status Dashboard 
+• Usage Dashboard
+
+<img width="1224" alt="image" src="https://user-images.githubusercontent.com/25983259/193446450-5bc06002-5dc3-4851-8248-7fb64be684e1.png">
+
+6.3 Let's examine each dashboard to view next level of analytis details. 
+
+6.4 Click on 'API Dashboard'. This dashboard contains charts that summarize total API calls, response codes, and response times.
+
+<img width="718" alt="image" src="https://user-images.githubusercontent.com/25983259/193446640-e5460c7c-22a1-4950-b288-3dcc76cbb131.png">
+
+Note: Each chart in the dashboards can be exported as JSON, CSV files, or as PNG or JPG images. To do this click the actions button at the top-right:
+It is also possible to enlarge the chart to full-screen by clicking Analytics full screen chart icon. To see the source data in tabular form click Analytics table view icon.
+
+6.5 Click 'Back' to return to the main dashboard view.
+
+6.5 Click on 'Product Dashboard'. This dashboard contains charts that show total API calls and Application subscriptions per plan.
+
+<img width="1171" alt="image" src="https://user-images.githubusercontent.com/25983259/193446855-37fb7077-cf0c-4388-8488-dc24eca63f10.png">
+
+6.6 Click 'Back' and explore 'Monitoring Latency Dashboard'. This dashboard contains charts that provide response time statistics and data usage.
+
+<img width="768" alt="image" src="https://user-images.githubusercontent.com/25983259/193447082-d22c22a8-b0f7-4be0-b2a8-d03d4539f68c.png">
+
+6.7 Click 'Back' and explore 'Monitoring Status Dashboard'. This dashboard contains charts that show the response codes and success/failure rates of API calls.
+
+<img width="668" alt="image" src="https://user-images.githubusercontent.com/25983259/193447109-d44fb8fd-8e55-4e70-82df-210bd83cbb69.png">
+
+6.8 You may further drill down the API event details of each API call either on error or success, by clicking on each API event listed.
+
+![image](https://user-images.githubusercontent.com/25983259/193447265-c5654335-aa2c-4e65-9c9d-60016ed1347b.png)
+
+You may examine the latency of each API actions within the assembly flow.
+<img width="1065" alt="image" src="https://user-images.githubusercontent.com/25983259/193447303-35d0f680-8c4f-400b-bb9a-af269532e361.png">
+
+You can also examine the API event data of each API invocation.
+<img width="770" alt="image" src="https://user-images.githubusercontent.com/25983259/193447436-d988deb3-b311-4896-9de0-f9dca3a727dd.png">
+
+6.8 Click 'Back' and explore 'Usage Dashboard'. This dashboard contains charts that show the top 5 APIs, Products, and Apps.
+
+<img width="946" alt="image" src="https://user-images.githubusercontent.com/25983259/193447538-438d11cb-d05c-4266-8334-d768c21571dd.png">.
+
+6.9 By default the Dashboards tab is displayed. To view your API event data in tabular form, select 'Discover'
+
+![image](https://user-images.githubusercontent.com/25983259/193447878-2c8cfe72-20ed-4a9e-8b3e-b36a8318e9f5.png)
+
+6.10 You can filter the data that is shown by clicking 'Edit', which opens the filters window:
+
+![image](https://user-images.githubusercontent.com/25983259/193447985-a6cbae8a-cd08-4cc2-932c-05e2c72c787b.png)
+
+6.11 You can also click Import/Export to import or export filter strings.
+
+<img width="1159" alt="image" src="https://user-images.githubusercontent.com/25983259/193448157-22008b1d-172b-48e0-b59c-e6169070d8b2.png">
+
+6.12 You can export the API event data from this view by clicking Actions at the upper right:
+
+![image](https://user-images.githubusercontent.com/25983259/193448142-88bfd3a9-bec5-4a56-b5b1-dfe96f098638.png)
+
+
+6.13 Besides accessing API analytics event data using Dashboard, you can also access the analytics event data by using the API Connect REST API.
+
+6.14 API Connect REST API calls are authenticated by using a bearer token in the authorization header. Use the toolkit credentials to request a bearer token. Toolkit credentials can be found in the API Manager UI.
+
+6.15 Go to the API Manager UI. From the home page, click the Download toolkit tile.
+
+![image](https://user-images.githubusercontent.com/25983259/193448464-0b6e115e-7654-4a86-bb9e-1375ffdb06b7.png)
+
+6.16 Download the credentials.
+![image](https://user-images.githubusercontent.com/25983259/193448806-d3b264e6-d05b-49ce-95d1-67feda569b15.png)
+
+6.17 Open the downloaded credentials.json file, example:
+
+![image](https://user-images.githubusercontent.com/25983259/193448899-ac5bff02-14bd-484c-908a-c374c3a4bb22.png)
+
+Take note of the toolkit.client_id, toolkit.client_secret, and toolkit.endpoint from this file. You will use these to get your bearer token.
+
+6.18 Use the credentials to request a bearer token:
+
+<img width="1108" alt="image" src="https://user-images.githubusercontent.com/25983259/193449060-9e170217-febb-4f2b-8cbe-8729db09f941.png">
+
+curl -v -k -X POST -d '{"username": "[username]", "password": "[password]", "realm": "[realm]", "client_id": "[client_id]", "client_secret": "[client_secret]", "grant_type": "password"}' -H 'Content-Type: application/json' -H 'Accept: application/json' https://[management server platform api endpoint]/token
+
+Where:
+
+[username] is either the admin user or provider org owner, depending on whether you want to access cloud or provider organization scoped analytics data.
+
+[<password] is the password for the specified <username>.
+
+[realm] is the user registry realm for the specified <username>. By default the realm is admin/default-idp-1 for the admin user, and provider/default-idp-2 for provider organization users.
+
+[client_id] is the client ID from the "toolkit" section of the credentials.json file, or as provided by your API Connect cloud administrator.
+
+[client_secret] is the client secret from the "toolkit" section of the credentials.json file, or as provided by your API Connect cloud administrator.
+
+[management server platform api endpoint] is the platform API endpoint from the "toolkit" section of the credentials.json file, or as provided by your API Connect cloud administrator.
+
+6.19 The bearer token is returned in the access_token property:
+
+<img width="454" alt="image" src="https://user-images.githubusercontent.com/25983259/193449032-451afcc8-f4fd-4861-99e4-a077ee04b83e.png">
+
+Note the expires_in value, which is the number of seconds before the token expires. After expiry you need to request a new bearer token.
+
+6.20 Use the returned bearer token to call the analytics REST API:
+
+<img width="1101" alt="image" src="https://user-images.githubusercontent.com/25983259/193449124-7b69a306-eadd-4531-bbe4-3ce241714c20.png">
+
+The following API call to /orgs/<provider organization>/events requires a bearer token that was requested with provider org credentials:
+
+curl -v -k -H 'Accept: application/json' -H 'Authorization: Bearer <bearer token>' -X GET --url 'https://[management server api endpoint]/analytics/<analytics_service>/orgs/[provider organization]/events'
+
+{
+    "total": 300,
+    "search_time": 3,
+    "events": [...]
+}
+
+Where:
+
+[management server api endpoint]" is the toolkit.endpoint, but with the /api at the end replaced with /analytics to access the analytics APIs.
+
+6.21 The complete list of Analytics REST API is documented here:
+
+https://apic-api.apiconnect.ibmcloud.com/v10/?_ga=2.162189244.1049865004.1664699487-28971200.1664599569#/IBMAPIConnectAnalyticsAPI_200/overview
+
+![image](https://user-images.githubusercontent.com/25983259/193450136-d26e12d6-6ea9-495b-af70-67ce88b1a868.png)
+
+Summary
+
+You completed Lab 6 - Use Analytics REST API to retrive API event data. Throughout the tutorial, you explored the key takeaways:   
+
+• Access API Analytics Dashboard.
+
+• Discover API event data.
+
+• Using Analytics REST API to query API event data 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
