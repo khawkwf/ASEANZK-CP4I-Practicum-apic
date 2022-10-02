@@ -1,7 +1,10 @@
 # ASEANZK-CP4I-Practicum-apic
-CP4I API Connect enablement 
+Cloud Pak for Integration - API Connect enablement 
 ### Tutorial Overview
-<img width="698" alt="image" src="https://user-images.githubusercontent.com/25983259/193075472-7df79cae-05e1-49bb-946c-258aaab1e55f.png">
+
+<img width="699" alt="image" src="https://user-images.githubusercontent.com/25983259/193450413-51164f30-0bdd-4d91-965a-c0243b1b879c.png">
+
+
 
 ### Tutorial Use Case:
 
@@ -40,7 +43,7 @@ In this tutorial, you will be using the API Connect tooling to design and meet t
 
 - Lab 5: Bank admin persona - Manage API versions and life cycle
 
-- Lab 6: Bank business personal - Analyze API usage and statistics
+- Lab 6: Bank managaer persona - Analyze API usage and statistics
 
 
 
@@ -179,6 +182,13 @@ information about how many times redact action is executed along with latency an
 
 Congratulations! You have created and tested your first API flow; proxied a backend application, secured it with an API key and masked sensitive data.
 Now that you have learned how to design and secure APIs, why don't you try doing it on your own by proxying your own backend API :)
+
+
+
+Fore more advanced lab "Creating a REST API definition that invokes an existing SOAP service", you may refer to the IBM Documentation:
+
+https://www.ibm.com/docs/en/api-connect/10.0.1.x?topic=SSMNED_v10/com.ibm.apic.apionprem.doc/tutorial_apionprem_expose_SOAP.html
+
 
 
 
@@ -348,7 +358,7 @@ Note: If no response is received, navigate to the URL that is displayed at the b
 
 Summary
 
-Congratulations, you have completed the 'Self Service on-boarding, Subscribe and Test API" lab. Throughout the lab, you learned how to:
+Congratulations, you have completed the 'Self Service on-boarding, Subscribe and Test API' lab. Throughout the lab, you learned how to:
 
 • Created a developer account in the Developer Portal.
 • Created and registered a new App, and subscribed it to a Plan.
@@ -547,9 +557,13 @@ You completed Lab 4 - Add OAuth Security to your API. Throughout the tutorial, y
 
 • Secure the new version of your API.
 
+For more advanced API security using JSON Web Token (JWT), you can follow tutorial in IBM Documentation site:
+
+https://www.ibm.com/docs/en/api-connect/10.0.1.x?topic=SSMNED_v10/com.ibm.apic.apionprem.doc/tutorial_onprem_jwt_gen.html
+https://www.ibm.com/docs/en/api-connect/10.0.1.x?topic=SSMNED_v10/com.ibm.apic.apionprem.doc/tutorial_onprem_jwt_val.html
 
 #### 5: Manage API
-In the previous lab, you created a new version of the Account-xxx API which is secured with an OAuth 2.0 provider. At this stage, however, the changes are still in draft mode. In order for the changes to take effect, you must publish the APIs to the developer portal and make them available for the API Consumers. Recall though that the account-xxx 1.0.0 version is already running and has active subscribers.
+In the previous lab, you created a new version of the account-xxx API which is secured with an OAuth 2.0 provider. At this stage, however, the changes are still in draft mode. In order for the changes to take effect, you must publish the APIs to the developer portal and make them available for the API Consumers. Recall though that the account-xxx 1.0.0 version is already running and has active subscribers.
 
 API lifecycle management capabilities is an essential part of the API Management platform. The API lifecycle includes the following stages:
 
