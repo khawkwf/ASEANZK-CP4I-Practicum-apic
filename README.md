@@ -2,35 +2,46 @@
 Cloud Pak for Integration - API Connect enablement 
 ### Tutorial Overview
 
+This tutorial is designed to guide participant to explore various key capabilities offered in IBM API Connect solution, such as API Manager, API Gateway, API Developer Portal and API Analytics. You will be playing different personas/roles throughout the exercise to gain different user experience in using the API Connect tool.
+
+You are required to implement API Management & Security functions to address the business requirements given in this tutorial, by following the standard API development framework to complete the exercise.
+
 <img width="699" alt="image" src="https://user-images.githubusercontent.com/25983259/193450413-51164f30-0bdd-4d91-965a-c0243b1b879c.png">
 
 
-
-### Tutorial Use Case:
+### Tutorial Use Case
 
 A regional bank wants to move to the cloud and adopt a platform to share data among registered partners but is concerned about continuing to meet regulatory compliance standards and mitigating potential security risks. As their integration specialist, you have been asked to demonstrate that access to account information via APIs all is secure no matter where they reside, and that the sensitive data MUST be protected. In this example, you’ll use security-rich features within the API management lifecycle to help proxy an API and mask sensitive data from the response, using built-in policies
 and mitigating potential security risks.
 
+<img width="990" alt="image" src="https://user-images.githubusercontent.com/25983259/193593738-c573a701-b207-41d7-84cb-0500468d4ad2.png">
+
+
 In this tutorial, you will be using the API Connect tooling to design and meet the following business requirement.
 
-  - Bank needs to provide customer account information to digital channels. e.g Fintech
+  - Bank needs to provide customer's bank account information to 3rd Party Portal upon request
 
-  - Create an API to allow digital channel developer to access & test the API from Bank’s developer portal.
-
-  - Customer account information is stored in core banking system with the virtual API endpoint: 
-(https://cp4i-mock-api.mybluemix.net/accounts)
+  - Customer's bank account information is stored in core banking system with the virtual API endpoint: 
+  
+    (https://cp4i-mock-api.mybluemix.net/accounts)
 
   - Sensitive data such as Identity Card No. & Phone No. must be masked before sending response back to the consumer app.
 
-  - Define API Plan with the quota,  e.g. 100 calls per minute
+  - Create an API to allow 3rd Party application developer to access & test the API from Bank’s developer portal.
+  
+  - Define API Plan with a quota, e.g. 100 calls per minute
 
-  - Only the authorized consumer app can consume the API with valid Client ID key.
+  - Only the authorized 3rd party consumer app can consume the API with valid Client ID key.
   
   - Need to authenticate and authorize the end customer using OAuth Token before accessing the core banking API.
   
   - Any version changes to the backend API should not affect the existing API subscribers. 
   
-  
+### API Use Case Context Flow:
+
+<img width="890" alt="image" src="https://user-images.githubusercontent.com/25983259/193583491-e78227db-184e-44fa-9e80-dbf773cdf0c9.png">
+
+
 ### Lab Summary:
   
 - Lab 1: Bank developer persona - Create API for external channel to access
@@ -46,14 +57,14 @@ In this tutorial, you will be using the API Connect tooling to design and meet t
 - Lab 6: Bank managaer persona - Analyze API usage and statistics
 
 
+### API design context:
+The following illustrates the login and naming conventions to be used throughout the lab.
 
-
-### Tutorial Context:
-
-<img width="606" alt="image" src="https://user-images.githubusercontent.com/25983259/193087744-8569dce7-bb37-4be6-9d8a-1be8264dc287.png">
-
+<img width="719" alt="image" src="https://user-images.githubusercontent.com/25983259/193609206-93dfb014-dd34-4c54-8f46-3ff0a112c22a.png">
 
 #### 1: Create API 
+
+In this lab, we will use the API Designer to create a new REST API to proxy an existing backend API endpoint. The new REST API will have the capability to secure the API using API key as well as masking the senstive data before sending the response back to the external consumer. 
 
 1.1 Access IBM Cloud Pak console and choose to login using "IBM provided credentials (admin only)"
 
